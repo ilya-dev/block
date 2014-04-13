@@ -10,24 +10,14 @@ class Comment {
     protected $comment;
 
     /**
-     * The Parser instance
-     *
-     * @var \Block\Parser
-     */
-    protected $parser;
-
-    /**
      * The constructor
      *
      * @param string $comment
-     * @param \Block\Parser|null $parser
      * @return void
      */
-    public function __construct($comment, Parser $parser = null)
+    public function __construct($comment)
     {
         $this->setComment($comment);
-
-        $this->parser = $parser ?: new Parser;
     }
 
     /**
@@ -56,7 +46,7 @@ class Comment {
      */
     public function getLines()
     {
-        $lines = $this->parser->splitComment($this->comment);
+        $lines = \explode(PHP_EOL, $this->comment);
 
         $wrapper = function($line)
         {

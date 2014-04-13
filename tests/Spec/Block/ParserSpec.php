@@ -17,11 +17,5 @@ class ParserSpec extends ObjectBehavior {
         $this->transformRaw($comment)->shouldReturn("The Foo\n@var string");
     }
 
-    function it_splits_a_comment_into_pieces()
-    {
-        $this->splitComment("The Foo\n@var string")
-             ->shouldReturn(['The Foo', '@var string']);
-    }
-
 }
 
