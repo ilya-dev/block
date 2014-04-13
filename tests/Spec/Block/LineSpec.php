@@ -39,5 +39,14 @@ class LineSpec extends ObjectBehavior {
         $this->isTag()->shouldBe(false);
     }
 
+    function it_splits_the_line_into_tokens()
+    {
+        $this->tokenize()->shouldReturn(['@param', 'int', '$speed']);
+
+        $this->setLine('some   dumb   line');
+
+        $this->tokenize()->shouldReturn(['some', 'dumb', 'line']);
+    }
+
 }
 

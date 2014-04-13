@@ -59,6 +59,18 @@ class Line {
     }
 
     /**
+     * "Tokenize" the line
+     *
+     * @return array
+     */
+    public function tokenize()
+    {
+        $tokens = \array_filter(\explode(' ', $this->line));
+
+        return \array_values($tokens);
+    }
+
+    /**
      * Convert the object to a string
      *
      * @return string
