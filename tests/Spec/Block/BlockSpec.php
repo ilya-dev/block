@@ -15,5 +15,14 @@ class BlockSpec extends ObjectBehavior {
         $this->shouldHaveType('Block\Block');
     }
 
+    function it_validates_the_passed_argument_and_sets_the_object()
+    {
+        $this->shouldThrow('InvalidArgumentException')->duringSetObject(null);
+
+        $object = new \stdClass;
+
+        $this->shouldNotThrow('InvalidArgumentException')->duringSetObject($object);
+    }
+
 }
 
