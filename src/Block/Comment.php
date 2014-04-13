@@ -39,5 +39,25 @@ class Comment {
         $this->comment = $comment;
     }
 
+    /**
+     * Get the comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Convert the object to a string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getComment();
+    }
+
 }
 

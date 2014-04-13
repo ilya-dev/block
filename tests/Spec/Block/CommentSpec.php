@@ -24,5 +24,12 @@ class CommentSpec extends ObjectBehavior {
         $this->shouldNotThrow('InvalidArgumentException')->duringSetComment('dumb');
     }
 
+    function it_returns_the_comment()
+    {
+        $this->getComment()->shouldReturn('dummy comment');
+
+        $this->getComment()->shouldBeEqualTo((string) $this->getWrappedObject());
+    }
+
 }
 
