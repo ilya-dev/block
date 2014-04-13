@@ -70,5 +70,34 @@ class Block {
         return new Comment($this->parser->transformRaw($comment));
     }
 
+    /**
+     * Get the comments for the all properties
+     *
+     * @param integer|null $filter
+     * @return array
+     */
+    public function properties($filter = null)
+    {
+        if (\is_null($filter))
+        {
+            $properties = $this->object->getProperties();
+        }
+        else
+        {
+            $properties = $this->object->getProperties($filter);
+        }
+
+        $parser = $this->parser;
+
+        $iterator = function(\ReflectionProperty $property) use($parser)
+        {
+            $comment = $parser->transformRaw($property->getDocComment());
+
+            return new Comment($comment);
+        };
+
+        return \array_map($iterator, $properties);
+    }
+
 }
 

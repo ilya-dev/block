@@ -40,5 +40,40 @@ class BlockSpec extends ObjectBehavior {
         $this->shouldThrow('UnexpectedValueException')->duringProperty(\uniqid());
     }
 
+    function it_fetches_all_existing_properties()
+    {
+        $properties = $this->properties();
+
+        $properties->shouldBeArray();
+        $properties->shouldHaveCount(3);
+        $properties->shouldAllHaveType('Block\Comment');
+    }
+
+    function it_can_filter_the_array_of_properties()
+    {
+        $this->properties(\ReflectionProperty::IS_PUBLIC)
+             ->shouldHaveCount(1);
+    }
+
+    /**
+     * Get the inline matchers
+     *
+     * @return array
+     */
+    public function getMatchers()
+    {
+        return [
+            'allHaveType' => function(array $subjects, $type)
+            {
+                foreach ($subjects as $subject)
+                {
+                    if ( ! ($subject instanceof $type)) return false;
+                }
+
+                return true;
+            },
+        ];
+    }
+
 }
 
