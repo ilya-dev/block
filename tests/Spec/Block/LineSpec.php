@@ -22,5 +22,13 @@ class LineSpec extends ObjectBehavior {
         $this->shouldNotThrow($e)->duringSetLine('foo');
     }
 
+    function it_returns_the_line()
+    {
+        $line = $this->getLine();
+
+        $line->shouldBeEqualTo('@param int $speed');
+        $line->shouldBeEqualTo((string) $this->getWrappedObject());
+    }
+
 }
 

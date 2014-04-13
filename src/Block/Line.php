@@ -38,5 +38,25 @@ class Line {
         $this->line = $line;
     }
 
+    /**
+     * Get the line
+     *
+     * @return string
+     */
+    public function getLine()
+    {
+        return $this->line;
+    }
+
+    /**
+     * Convert the object to a string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->line;
+    }
+
 }
 
