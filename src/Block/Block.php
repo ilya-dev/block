@@ -65,9 +65,7 @@ class Block {
             throw new \UnexpectedValueException($message);
         }
 
-        $comment = $this->object->getProperty($name)->getDocComment();
-
-        return new Comment($this->parser->transformRaw($comment));
+        return $this->extractComment($this->object->getProperty($name));
     }
 
     /**
@@ -87,16 +85,18 @@ class Block {
             $properties = $this->object->getProperties($filter);
         }
 
-        $parser = $this->parser;
+        return \array_map([$this, 'extractComment'], $properties);
+    }
 
-        $iterator = function(\ReflectionProperty $property) use($parser)
-        {
-            $comment = $parser->transformRaw($property->getDocComment());
-
-            return new Comment($comment);
-        };
-
-        return \array_map($iterator, $properties);
+    /**
+     * Extract the comment from the given entity
+     *
+     * @param mixed $entity
+     * @return \Block\Comment
+     */
+    protected function extractComment($entity)
+    {
+        return new Comment($this->parser->transformRaw($entity->getDocComment()));
     }
 
 }
