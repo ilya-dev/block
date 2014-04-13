@@ -6,6 +6,14 @@
 Block requires `php >= 5.4.0` and works perfectly out-of-the-box.
 Also it is fully tested and documented.
 
+## Installation
+
+Grab it using Composer: `composer require ilya/block:dev-master`.
+
+
+Prefer a tagged release? Use `1.0.1`, `1.0.0`. I use semantic versioning in my projects, 
+so you can safely use `~1`, trust me.
+
 ## Example
 
 Imagine you have the following code:
