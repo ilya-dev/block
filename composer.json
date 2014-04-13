@@ -1,6 +1,7 @@
 {
     "name": "ilya/block",
     "description": "Parsing docblocks made easy",
+    "keywords": ["php", "docs", "documentation", "blocks", "docblocks", "parsing", "reflection"],
     "require-dev": {
         "phpspec/phpspec": "~2"
     },
