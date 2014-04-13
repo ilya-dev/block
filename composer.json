@@ -1,0 +1,17 @@
+{
+    "name": "ilya/block",
+    "description": "Parsing docblocks made easy",
+    "require-dev": {
+        "phpspec/phpspec": "~2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilya S",
+            "email": "public.ilya.s@gmail.com"
+        }
+    ],
+    "require": {
+
+    }
+}
