@@ -30,5 +30,14 @@ class LineSpec extends ObjectBehavior {
         $line->shouldBeEqualTo((string) $this->getWrappedObject());
     }
 
+    function it_determines_whether_it_is_a_tag()
+    {
+        $this->isTag()->shouldBe(true);
+
+        $this->setLine('foo');
+
+        $this->isTag()->shouldBe(false);
+    }
+
 }
 

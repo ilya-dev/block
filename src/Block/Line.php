@@ -49,6 +49,16 @@ class Line {
     }
 
     /**
+     * Determine whether it is a tag
+     *
+     * @return boolean
+     */
+    public function isTag()
+    {
+        return \strpos($this->line, '@') === 0;
+    }
+
+    /**
      * Convert the object to a string
      *
      * @return string
