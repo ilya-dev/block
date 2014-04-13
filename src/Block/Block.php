@@ -23,6 +23,7 @@ class Block {
     /**
      * Set the object you want to work with
      *
+     * @throws \InvalidArgumentException
      * @param mixed $object
      * @return void
      */
@@ -35,7 +36,20 @@ class Block {
             throw new \InvalidArgumentException($message);
         }
 
-        $this->object = $object;
+        $this->object = new \ReflectionClass($object);
+    }
+
+    /**
+     * Fetch the comment for the given property
+     *
+     * @param string $name
+     * @return \Block\Comment
+     */
+    public function property($name)
+    {
+        $property = $this->object->getProperty($name);
+
+        return new Comment($property->getDocComment());
     }
 
 }

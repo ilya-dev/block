@@ -3,6 +3,8 @@
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
+use Block\Comment;
+
 class BlockSpec extends ObjectBehavior {
 
     function let()
@@ -22,6 +24,15 @@ class BlockSpec extends ObjectBehavior {
         $object = new \stdClass;
 
         $this->shouldNotThrow('InvalidArgumentException')->duringSetObject($object);
+    }
+
+    function it_fetches_the_property_comment()
+    {
+        $comment  = new Comment('The Foo');
+        $property = $this->property('foo');
+
+        $property->shouldHaveType('Block\Comment');
+        $property->shouldBeLike($comment);
     }
 
 }

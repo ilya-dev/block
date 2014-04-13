@@ -23,6 +23,7 @@ class Comment {
     /**
      * Set the comment
      *
+     * @throws \InvalidArgumentException
      * @param string $comment
      * @return void
      */
