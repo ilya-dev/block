@@ -10,14 +10,24 @@ class Comment {
     protected $comment;
 
     /**
+     * The Parser instance
+     *
+     * @var \Block\Parser
+     */
+    protected $parser;
+
+    /**
      * The constructor
      *
      * @param string $comment
+     * @param \Block\Parser|null $parser
      * @return void
      */
-    public function __construct($comment)
+    public function __construct($comment, Parser $parser = null)
     {
         $this->setComment($comment);
+
+        $this->parser = $parser ?: new Parser;
     }
 
     /**
@@ -40,6 +50,23 @@ class Comment {
     }
 
     /**
+     * Represent the comment as an array of Line(s)
+     *
+     * @return array
+     */
+    public function getLines()
+    {
+        $lines = $this->parser->splitComment($this->comment);
+
+        $wrapper = function($line)
+        {
+            return new Line($line);
+        };
+
+        return \array_map($wrapper, $lines);
+    }
+
+    /**
      * Get the comment
      *
      * @return string
@@ -56,7 +83,7 @@ class Comment {
      */
     public function __toString()
     {
-        return $this->getComment();
+        return $this->comment;
     }
 
 }
