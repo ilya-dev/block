@@ -89,6 +89,36 @@ class Block {
     }
 
     /**
+     * Get the comment for the given method
+     *
+     * @throws \UnexpectedValueException
+     * @param string $name
+     * @return \Block\Comment
+     */
+    public function method($name)
+    {
+        if ( ! $this->object->hasMethod($name))
+        {
+            $message = "Method {$name} does not exist";
+
+            throw new \UnexpectedValueException($message);
+        }
+
+        return $this->extractComment($this->object->getMethod($name));
+    }
+
+    /**
+     * Get the comments for all the methods
+     *
+     * @param integer|null $filter
+     * @return array
+     */
+    public function methods($filter = null)
+    {
+
+    }
+
+    /**
      * Extract the comment from the given entity
      *
      * @param mixed $entity

@@ -55,6 +55,23 @@ class BlockSpec extends ObjectBehavior {
              ->shouldHaveCount(1);
     }
 
+    function it_fetches_the_method_comment()
+    {
+        $method = $this->method('so');
+
+        $comment = new Comment(
+            "See If Amaze\n@param mixed \$amaze\n@return mixed|null"
+        );
+
+        $method->shouldHaveType('Block\Comment');
+        $method->shouldBeLike($comment);
+    }
+
+    function it_throws_an_exception_if_the_method_does_not_exist()
+    {
+        $this->shouldThrow('UnexpectedValueException')->duringMethod(\uniqid());
+    }
+
     /**
      * Get the inline matchers
      *
