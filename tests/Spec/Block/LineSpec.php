@@ -15,5 +15,12 @@ class LineSpec extends ObjectBehavior {
         $this->shouldHaveType('Block\Line');
     }
 
+    function it_validates_the_passed_argument_and_sets_the_line()
+    {
+        $this->shouldThrow($e = 'InvalidArgumentException')->duringSetLine(null);
+
+        $this->shouldNotThrow($e)->duringSetLine('foo');
+    }
+
 }
 
