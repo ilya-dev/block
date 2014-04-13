@@ -10,11 +10,17 @@ class ParserSpec extends ObjectBehavior {
         $this->shouldHaveType('Block\Parser');
     }
 
-    function it_can_make_a_raw_comment_prettier()
+    function it_makes_a_raw_comment_prettier()
     {
         $comment = "/**\n     * The Foo\n     *\n     * @var string\n     */";
 
         $this->transformRaw($comment)->shouldReturn("The Foo\n@var string");
+    }
+
+    function it_splits_a_comment_into_pieces()
+    {
+        $this->splitComment("The Foo\n@var string")
+             ->shouldReturn(['The Foo', '@var string']);
     }
 
 }
