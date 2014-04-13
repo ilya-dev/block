@@ -52,6 +52,7 @@ class Block {
     /**
      * Fetch the comment for the given property
      *
+     * @throws \UnexpectedValueException
      * @param string $name
      * @return \Block\Comment
      */
