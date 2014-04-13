@@ -115,7 +115,16 @@ class Block {
      */
     public function methods($filter = null)
     {
+        if (\is_null($filter))
+        {
+            $methods = $this->object->getMethods();
+        }
+        else
+        {
+            $methods = $this->object->getMethods($filter);
+        }
 
+        return \array_map([$this, 'extractComment'], $methods);
     }
 
     /**

@@ -72,6 +72,21 @@ class BlockSpec extends ObjectBehavior {
         $this->shouldThrow('UnexpectedValueException')->duringMethod(\uniqid());
     }
 
+    function it_fetches_all_existing_methods()
+    {
+        $methods = $this->methods();
+
+        $methods->shouldBeArray();
+        $methods->shouldHaveCount(3);
+        $methods->shouldAllHaveType('Block\Comment');
+    }
+
+    function it_can_filter_the_array_of_methods()
+    {
+        $this->methods(\ReflectionMethod::IS_PRIVATE)
+             ->shouldHaveCount(1);
+    }
+
     /**
      * Get the inline matchers
      *
