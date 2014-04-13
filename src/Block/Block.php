@@ -10,14 +10,24 @@ class Block {
     protected $object;
 
     /**
+     * The Parser instance
+     *
+     * @var \Block\Parser
+     */
+    protected $parser;
+
+    /**
      * The constructor
      *
      * @param mixed $object
+     * @param \Block\Parser|null $parser
      * @return void
      */
-    public function __construct($object)
+    public function __construct($object, Parser $parser = null)
     {
         $this->setObject($object);
+
+        $this->parser = $parser ?: new Parser;
     }
 
     /**
@@ -47,9 +57,9 @@ class Block {
      */
     public function property($name)
     {
-        $property = $this->object->getProperty($name);
+        $comment = $this->object->getProperty($name)->getDocComment();
 
-        return new Comment($property->getDocComment());
+        return new Comment($this->parser->transformRaw($comment));
     }
 
 }

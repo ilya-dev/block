@@ -10,7 +10,11 @@ class Parser {
      */
     public function transformRaw($comment)
     {
+        $comment = \str_replace(['/', '*'], '', $comment);
 
+        $pieces = \array_map('\\trim', \explode(PHP_EOL, $comment));
+
+        return implode(PHP_EOL, \array_filter($pieces));
     }
 
 }

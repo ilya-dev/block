@@ -28,7 +28,7 @@ class BlockSpec extends ObjectBehavior {
 
     function it_fetches_the_property_comment()
     {
-        $comment  = new Comment('The Foo');
+        $comment  = new Comment("The Foo\n@var string");
         $property = $this->property('foo');
 
         $property->shouldHaveType('Block\Comment');
