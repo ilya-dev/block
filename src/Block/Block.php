@@ -57,6 +57,13 @@ class Block {
      */
     public function property($name)
     {
+        if ( ! $this->object->hasProperty($name))
+        {
+            $message = "Property {$name} does not exist";
+
+            throw new \UnexpectedValueException($message);
+        }
+
         $comment = $this->object->getProperty($name)->getDocComment();
 
         return new Comment($this->parser->transformRaw($comment));

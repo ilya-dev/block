@@ -35,5 +35,10 @@ class BlockSpec extends ObjectBehavior {
         $property->shouldBeLike($comment);
     }
 
+    function it_throws_an_exception_if_the_property_does_not_exist()
+    {
+        $this->shouldThrow('UnexpectedValueException')->duringProperty(\uniqid());
+    }
+
 }
 
