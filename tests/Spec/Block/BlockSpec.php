@@ -87,6 +87,13 @@ class BlockSpec extends ObjectBehavior {
              ->shouldHaveCount(1);
     }
 
+    function it_receives_a_Reflector_instance(\ReflectionClass $reflector)
+    {
+        $reflector->getDocComment()->willReturn("/** *  foo\n*  bar\n*/");
+
+        $this->reflector($reflector)->shouldHaveType('Block\Comment');
+    }
+
     /**
      * Get the inline matchers
      *

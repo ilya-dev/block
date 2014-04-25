@@ -128,12 +128,23 @@ class Block {
     }
 
     /**
-     * Extract the comment from the entity.
+     * Extract the comment from the given Reflector instance.
      *
-     * @param mixed $entity
+     * @param \Reflector $reflector
      * @return Comment
      */
-    protected function extractComment($entity)
+    public function reflector(\Reflector $reflector)
+    {
+        return $this->extractComment($reflector);
+    }
+
+    /**
+     * Extract the comment from the entity.
+     *
+     * @param \Reflector $entity
+     * @return Comment
+     */
+    protected function extractComment(\Reflector $entity)
     {
         return new Comment($this->parser->transformRaw($entity->getDocComment()));
     }
