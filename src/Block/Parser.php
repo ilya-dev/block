@@ -3,7 +3,7 @@
 class Parser {
 
     /**
-     * Make the raw comment prettier
+     * "Prettify" a raw comment.
      *
      * @param string $comment
      * @return string

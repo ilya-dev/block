@@ -3,25 +3,25 @@
 class Block {
 
     /**
-     * The object we work with
+     * The object we work with.
      *
      * @var mixed
      */
     protected $object;
 
     /**
-     * The Parser instance
+     * The Parser instance.
      *
-     * @var \Block\Parser
+     * @var Parser
      */
     protected $parser;
 
     /**
-     * The constructor
+     * The constructor.
      *
      * @param mixed $object
-     * @param \Block\Parser|null $parser
-     * @return void
+     * @param Parser|null $parser
+     * @return Block
      */
     public function __construct($object, Parser $parser = null)
     {
@@ -31,7 +31,7 @@ class Block {
     }
 
     /**
-     * Set the object you want to work with
+     * Set the object you want to work with.
      *
      * @throws \InvalidArgumentException
      * @param mixed $object
@@ -50,11 +50,11 @@ class Block {
     }
 
     /**
-     * Fetch the comment for the given property
+     * Fetch a property comment.
      *
      * @throws \UnexpectedValueException
      * @param string $name
-     * @return \Block\Comment
+     * @return Comment
      */
     public function property($name)
     {
@@ -69,7 +69,7 @@ class Block {
     }
 
     /**
-     * Get the comments for the all properties
+     * Get the comments for all properties.
      *
      * @param integer|null $filter
      * @return array
@@ -89,11 +89,11 @@ class Block {
     }
 
     /**
-     * Get the comment for the given method
+     * Get the method comment.
      *
      * @throws \UnexpectedValueException
      * @param string $name
-     * @return \Block\Comment
+     * @return Comment
      */
     public function method($name)
     {
@@ -108,7 +108,7 @@ class Block {
     }
 
     /**
-     * Get the comments for all the methods
+     * Get the comments for all methods.
      *
      * @param integer|null $filter
      * @return array
@@ -128,10 +128,10 @@ class Block {
     }
 
     /**
-     * Extract the comment from the given entity
+     * Extract the comment from the entity.
      *
      * @param mixed $entity
-     * @return \Block\Comment
+     * @return Comment
      */
     protected function extractComment($entity)
     {

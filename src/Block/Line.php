@@ -3,17 +3,17 @@
 class Line {
 
     /**
-     * The line itself
+     * The line.
      *
      * @var string
      */
     protected $line;
 
     /**
-     * The constructor
+     * The constructor.
      *
      * @param string $line
-     * @return void
+     * @return Line
      */
     public function __construct($line)
     {
@@ -21,7 +21,7 @@ class Line {
     }
 
     /**
-     * Set the line
+     * Set the line.
      *
      * @param string $line
      * @return void
@@ -39,7 +39,7 @@ class Line {
     }
 
     /**
-     * Get the line
+     * Get the line.
      *
      * @return string
      */
@@ -49,7 +49,7 @@ class Line {
     }
 
     /**
-     * Determine whether it is a tag
+     * Determine whether the line contains a @tag.
      *
      * @return boolean
      */
@@ -59,7 +59,7 @@ class Line {
     }
 
     /**
-     * "Tokenize" the line
+     * "Tokenize" the line.
      *
      * @return array
      */
@@ -71,7 +71,7 @@ class Line {
     }
 
     /**
-     * Convert the object to a string
+     * Convert the object to a string.
      *
      * @return string
      */

@@ -3,17 +3,17 @@
 class Comment {
 
     /**
-     * The comment itself
+     * The comment.
      *
      * @var string
      */
     protected $comment;
 
     /**
-     * The constructor
+     * The constructor.
      *
      * @param string $comment
-     * @return void
+     * @return Comment
      */
     public function __construct($comment)
     {
@@ -21,7 +21,7 @@ class Comment {
     }
 
     /**
-     * Set the comment
+     * Set the comment.
      *
      * @throws \InvalidArgumentException
      * @param string $comment
@@ -40,7 +40,7 @@ class Comment {
     }
 
     /**
-     * Represent the comment as an array of Line(s)
+     * Represent the comment as an array of Line instances.
      *
      * @return array
      */
@@ -57,7 +57,7 @@ class Comment {
     }
 
     /**
-     * Get the comment
+     * Get the comment.
      *
      * @return string
      */
@@ -67,7 +67,7 @@ class Comment {
     }
 
     /**
-     * Convert the object to a string
+     * Convert the object to a string.
      *
      * @return string
      */
