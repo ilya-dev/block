@@ -1,5 +1,7 @@
 # Block
 
+[![Build Status](https://travis-ci.org/ilya-dev/block.svg?branch=master)](https://travis-ci.org/ilya-dev/block)
+
 *Block* makes parsing PHP DocBlocks easier.
 
 
