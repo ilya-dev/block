@@ -58,6 +58,7 @@ Now you can begin to inspect the docblocks using these four methods available to
 + `array properties(integer $filter)`
 + `\Block\Comment method(string $name)`
 + `array methods(integer $filter)`
++ `\Block\Comment reflector(\Reflector $reflector)` **(NEW!)**
 
 Methods `property` and `method` will receive a name (as a string) and return an instance
 of `\Block\Comment`. Methods `properties` and `methods` will receive an optional argument `$filter` 
