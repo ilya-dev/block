@@ -59,6 +59,16 @@ class Line {
     }
 
     /**
+     * Strip the @tag.
+     *
+     * @return string
+     */
+    public function stripTag()
+    {
+        return \trim(\preg_replace('/@(\w+)/', '', $this->line, 1));
+    }
+
+    /**
      * "Tokenize" the line.
      *
      * @return array

@@ -48,5 +48,12 @@ class LineSpec extends ObjectBehavior {
         $this->tokenize()->shouldReturn(['some', 'dumb', 'line']);
     }
 
+    function it_strips_the_tag()
+    {
+        $this->setLine('@tag some cool @stuff');
+
+        $this->stripTag()->shouldReturn('some cool @stuff');
+    }
+
 }
 
