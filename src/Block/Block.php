@@ -23,9 +23,12 @@ class Block {
      * @param Parser|null $parser
      * @return Block
      */
-    public function __construct($object, Parser $parser = null)
+    public function __construct($object = null, Parser $parser = null)
     {
-        $this->setObject($object);
+        if ( ! \is_null($object))
+        {
+            $this->setObject($object);
+        }
 
         $this->parser = $parser ?: new Parser;
     }
