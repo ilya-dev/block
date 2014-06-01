@@ -1,5 +1,7 @@
 <?php namespace Block;
 
+use InvalidArgumentException;
+
 class Comment {
 
     /**
@@ -23,17 +25,17 @@ class Comment {
     /**
      * Set the comment.
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @param string $comment
      * @return void
      */
     public function setComment($comment)
     {
-        if ( ! \is_string($comment))
+        if ( ! is_string($comment))
         {
-            $message = 'Expected to receive a string, but got'.\gettype($comment);
-
-            throw new \InvalidArgumentException($message);
+            throw new InvalidArgumentException(
+                'Expected a string, but got '.gettype($comment)
+            );
         }
 
         $this->comment = $comment;
@@ -46,14 +48,14 @@ class Comment {
      */
     public function getLines()
     {
-        $lines = \explode(PHP_EOL, $this->comment);
+        $lines = explode(PHP_EOL, $this->comment);
 
         $wrapper = function($line)
         {
             return new Line($line);
         };
 
-        return \array_map($wrapper, $lines);
+        return array_map($wrapper, $lines);
     }
 
     /**
@@ -77,4 +79,3 @@ class Comment {
     }
 
 }
-
