@@ -1,7 +1,6 @@
 <?php namespace Spec\Block;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class LineSpec extends ObjectBehavior {
 
@@ -17,9 +16,9 @@ class LineSpec extends ObjectBehavior {
 
     function it_validates_the_passed_argument_and_sets_the_line()
     {
-        $this->shouldThrow($e = 'InvalidArgumentException')->duringSetLine(null);
+        $this->shouldThrow('InvalidArgumentException')->duringSetLine(null);
 
-        $this->shouldNotThrow($e)->duringSetLine('foo');
+        $this->shouldNotThrow('InvalidArgumentException')->duringSetLine('foo');
     }
 
     function it_returns_the_line()
@@ -56,4 +55,3 @@ class LineSpec extends ObjectBehavior {
     }
 
 }
-

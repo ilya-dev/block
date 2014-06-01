@@ -1,5 +1,7 @@
 <?php namespace Block;
 
+use InvalidArgumentException;
+
 class Line {
 
     /**
@@ -23,16 +25,17 @@ class Line {
     /**
      * Set the line.
      *
+     * @throws InvalidArgumentException
      * @param string $line
      * @return void
      */
     public function setLine($line)
     {
-        if ( ! \is_string($line))
+        if ( ! is_string($line))
         {
-            $message = 'Expected to receive a string, but got '.\gettype($line);
-
-            throw new \InvalidArgumentException($message);
+            throw new InvalidArgumentException(
+                'Expected a string, but got '.gettype($line)
+            );
         }
 
         $this->line = $line;
@@ -55,7 +58,7 @@ class Line {
      */
     public function isTag()
     {
-        return \strpos($this->line, '@') === 0;
+        return strpos($this->line, '@') === 0;
     }
 
     /**
@@ -65,19 +68,17 @@ class Line {
      */
     public function stripTag()
     {
-        return \trim(\preg_replace('/@(\w+)/', '', $this->line, 1));
+        return trim(preg_replace('/@(\w+)/', '', $this->line, 1));
     }
 
     /**
-     * "Tokenize" the line.
+     * Tokenize the line.
      *
      * @return array
      */
     public function tokenize()
     {
-        $tokens = \array_filter(\explode(' ', $this->line));
-
-        return \array_values($tokens);
+        return array_values(array_filter(explode(' ', $this->line)));
     }
 
     /**
@@ -91,4 +92,3 @@ class Line {
     }
 
 }
-
