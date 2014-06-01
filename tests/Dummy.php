@@ -1,43 +1,45 @@
 <?php namespace Block\Testing;
 
+use stdClass;
+
 class Dummy {
 
     /**
-     * The Foo
+     * The Foo.
      *
      * @var string
      */
     protected $foo;
 
     /**
-     * The Bar
+     * The Bar.
      *
      * @var integer
      */
     private static $bar;
 
     /**
-     * The Baz
+     * The Baz.
      *
      * @var array
      */
     public $baz;
 
     /**
-     * Do Wow
+     * Do Wow.
      *
-     * @param \stdClass $foo
+     * @param stdClass $foo
      * @param float $bar
      * @param string $baz
      * @return array
      */
-    public function wow($foo, $bar, $baz)
+    public function wow(stdClass $foo, $bar, $baz)
     {
 
     }
 
     /**
-     * See If Amaze
+     * See If Amaze.
      *
      * @param mixed $amaze
      * @return mixed|null
@@ -48,7 +50,7 @@ class Dummy {
     }
 
     /**
-     * Do Amaze
+     * Do Amaze.
      *
      * @return void
      */
@@ -58,4 +60,3 @@ class Dummy {
     }
 
 }
-

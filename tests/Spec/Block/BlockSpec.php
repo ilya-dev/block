@@ -30,7 +30,7 @@ class BlockSpec extends ObjectBehavior {
 
     function it_fetches_the_property_comment()
     {
-        $comment  = new Comment("The Foo\n@var string");
+        $comment  = new Comment("The Foo.\n@var string");
         $property = $this->property('foo');
 
         $property->shouldHaveType('Block\Comment');
@@ -62,7 +62,7 @@ class BlockSpec extends ObjectBehavior {
         $method = $this->method('so');
 
         $comment = new Comment(
-            "See If Amaze\n@param mixed \$amaze\n@return mixed|null"
+            "See If Amaze.\n@param mixed \$amaze\n@return mixed|null"
         );
 
         $method->shouldHaveType('Block\Comment');
