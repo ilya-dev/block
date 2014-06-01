@@ -1,15 +1,15 @@
 <?php namespace Spec\Block;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
-
-use Block\Comment;
+use Block\Comment, Block\Testing\Dummy;
+use stdClass;
+use ReflectionClass, ReflectionMethod, ReflectionProperty;
 
 class BlockSpec extends ObjectBehavior {
 
     function let()
     {
-        $this->beConstructedWith(new \Block\Testing\Dummy);
+        $this->beConstructedWith(new Dummy);
     }
 
     function it_is_initializable()
@@ -19,11 +19,13 @@ class BlockSpec extends ObjectBehavior {
 
     function it_validates_the_passed_argument_and_sets_the_object()
     {
-        $this->shouldThrow('InvalidArgumentException')->duringSetObject(null);
+        $this->shouldThrow('InvalidArgumentException')
+             ->duringSetObject(null);
 
-        $object = new \stdClass;
+        $object = new stdClass;
 
-        $this->shouldNotThrow('InvalidArgumentException')->duringSetObject($object);
+        $this->shouldNotThrow('InvalidArgumentException')
+             ->duringSetObject($object);
     }
 
     function it_fetches_the_property_comment()
@@ -37,7 +39,7 @@ class BlockSpec extends ObjectBehavior {
 
     function it_throws_an_exception_if_the_property_does_not_exist()
     {
-        $this->shouldThrow('UnexpectedValueException')->duringProperty(\uniqid());
+        $this->shouldThrow('UnexpectedValueException')->duringProperty(uniqid());
     }
 
     function it_fetches_all_existing_properties()
@@ -51,7 +53,7 @@ class BlockSpec extends ObjectBehavior {
 
     function it_can_filter_the_array_of_properties()
     {
-        $this->properties(\ReflectionProperty::IS_PUBLIC)
+        $this->properties(ReflectionProperty::IS_PUBLIC)
              ->shouldHaveCount(1);
     }
 
@@ -69,7 +71,7 @@ class BlockSpec extends ObjectBehavior {
 
     function it_throws_an_exception_if_the_method_does_not_exist()
     {
-        $this->shouldThrow('UnexpectedValueException')->duringMethod(\uniqid());
+        $this->shouldThrow('UnexpectedValueException')->duringMethod(uniqid());
     }
 
     function it_fetches_all_existing_methods()
@@ -83,11 +85,11 @@ class BlockSpec extends ObjectBehavior {
 
     function it_can_filter_the_array_of_methods()
     {
-        $this->methods(\ReflectionMethod::IS_PRIVATE)
+        $this->methods(ReflectionMethod::IS_PRIVATE)
              ->shouldHaveCount(1);
     }
 
-    function it_receives_a_Reflector_instance(\ReflectionClass $reflector)
+    function it_receives_a_Reflector_instance(ReflectionClass $reflector)
     {
         $reflector->getDocComment()->willReturn("/** *  foo\n*  bar\n*/");
 
@@ -95,7 +97,7 @@ class BlockSpec extends ObjectBehavior {
     }
 
     /**
-     * Get the inline matchers
+     * Get the inline matchers.
      *
      * @return array
      */
@@ -106,13 +108,15 @@ class BlockSpec extends ObjectBehavior {
             {
                 foreach ($subjects as $subject)
                 {
-                    if ( ! ($subject instanceof $type)) return false;
+                    if ( ! $subject instanceof $type)
+                    {
+                        return false;
+                    }
                 }
 
                 return true;
-            },
+            }
         ];
     }
 
 }
-
