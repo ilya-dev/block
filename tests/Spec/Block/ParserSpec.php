@@ -1,7 +1,6 @@
 <?php namespace Spec\Block;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class ParserSpec extends ObjectBehavior {
 
@@ -18,4 +17,3 @@ class ParserSpec extends ObjectBehavior {
     }
 
 }
-
