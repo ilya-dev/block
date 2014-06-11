@@ -2,6 +2,9 @@
 
 use stdClass;
 
+/**
+ * The Dummy.
+ */
 class Dummy {
 
     /**

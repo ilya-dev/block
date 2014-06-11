@@ -56,6 +56,16 @@ class Block {
     }
 
     /**
+     * Fetch the object's documentation block.
+     *
+     * @return Comment
+     */
+    public function itself()
+    {
+        return $this->reflector($this->object);
+    }
+
+    /**
      * Fetch a property comment.
      *
      * @throws UnexpectedValueException

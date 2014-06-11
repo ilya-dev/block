@@ -96,6 +96,14 @@ class BlockSpec extends ObjectBehavior {
         $this->reflector($reflector)->shouldHaveType('Block\Comment');
     }
 
+    function it_fetches_the_objects_documentation_block()
+    {
+        $comment = $this->itself();
+
+        $comment->shouldHaveType('Block\Comment');
+        $comment->getComment()->shouldReturn('The Dummy.');
+    }
+
     /**
      * Get the inline matchers.
      *
