@@ -4,17 +4,11 @@
 
 *Block* makes parsing PHP DocBlocks easier.
 
-
-Block requires `php >= 5.4.0` and works perfectly out-of-the-box.
-Also it is fully tested and documented.
+Simple, documented and fully tested. PHP 5.4 is required.
 
 ## Installation
 
-Grab it using Composer: `composer require ilya/block:dev-master`.
-
-
-Prefer a tagged release? Use `1.0.1`, `1.0.0`. I use semantic versioning in my projects, 
-so you can safely use `~1`, trust me.
+Using Composer: `composer require "ilya/block:~1"`.
 
 ## Example
 
@@ -94,7 +88,7 @@ Here's what it offers:
 + `boolean isTag(void)` - determine whether the line contains a tag: will be true for `@param int $speed` and false for `My desc`. 
 + `string getLine(void)` - get the line itself, as a string, note that `(string) $line` would also work.
 + `array tokenize(void)` - split the line into "tokens" - e.g `@param int $speed` will be represented as `['@param', 'int', '$speed']`. All white spaces are ignored.
-+ `string stripTag(void)` **(NEW)**
++ `string stripTag(void)`
 
 So that's it, hopefully you now can start to use Block in your projects.
 
