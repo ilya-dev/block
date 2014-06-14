@@ -72,6 +72,16 @@ class Line {
     }
 
     /**
+     * Get the @tag name.
+     *
+     * @return string
+     */
+    public function getTag()
+    {
+        return str_replace('@', '', reset($this->tokenize()));
+    }
+
+    /**
      * Tokenize the line.
      *
      * @return array

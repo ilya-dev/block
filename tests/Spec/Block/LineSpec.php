@@ -54,4 +54,9 @@ class LineSpec extends ObjectBehavior {
         $this->stripTag()->shouldReturn('some cool @stuff');
     }
 
+    function it_returns_the_tag()
+    {
+        $this->getTag()->shouldReturn('param');
+    }
+
 }
